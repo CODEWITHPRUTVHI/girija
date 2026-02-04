@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girija Enterprises - Recycled Plastic Materials Trading</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A8754;
+            --primary-dark: #076B43;
+            --secondary: #2C7DA0;
+            --accent: #00D084;
+            --dark: #1A1A1A;
+            --dark-gray: #2D2D2D;
+            --light-gray: #F5F7F9;
+            --white: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --border: #E0E0E0;
+            --success: #00C853;
+            --warning: #FFC107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #0A8754 0%, #2C7DA0 100%);
+            color: white;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M10 10h80v80h-80z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="2"/><circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="2"/></svg>');
+            opacity: 0.4;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 1s ease 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .recycling-circle {
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .recycling-circle::before,
+        .recycling-circle::after {
+            content: '♻';
+            position: absolute;
+            font-size: 4rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 5rem 2rem;
+            background: var(--light-gray);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .process-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .process-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .process-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Manrope', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(10, 135, 84, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .file-upload {
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary);
+            background: var(--light-gray);
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Materials Grid */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .material-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .material-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .material-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .material-content {
+            padding: 1.5rem;
+        }
+
+        .material-type {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .material-detail {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem 0;
+            color: var(--text-light);
+        }
+
+        .material-detail strong {
+            color: var(--dark);
+        }
+
+        .material-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 5rem 2rem;
+            background: var(--dark);
+            color: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 2rem;
+            background: var(--light-gray);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details p {
+            color: var(--text-light);
+        }
+
+        .contact-details a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: var(--success);
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: none;
+            animation: slideDown 0.5s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-120%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero-container,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .recycling-circle {
+                width: 200px;
+                height: 200px;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">
+                <div class="logo-icon">♻</div>
+                <span>Girija Enterprises</span>
+            </a>
+            <div class="mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('sell')">Sell Material</a></li>
+                <li><a href="#" onclick="showPage('buy')">Buy Material</a></li>
+                <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Homepage -->
+    <div id="home" class="page-section active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Connecting Plastic Suppliers with Recyclers</h1>
+                    <p class="hero-subtitle">Your trusted partner in sustainable plastic trading. We bridge the gap between raw plastic suppliers and recycling buyers across India.</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" onclick="showPage('sell')">
+                            📦 Sell Raw Plastic
+                        </button>
+                        <button class="btn btn-secondary" onclick="showPage('buy')">
+                            🔄 Buy Recycled Material
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="recycling-circle">
+                        <span style="font-size: 6rem; animation: none;">♻</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">How Girija Enterprises Works</h2>
+                    <p class="section-subtitle">Simple, transparent process connecting suppliers and buyers</p>
+                </div>
+                <div class="process-grid">
+                    <div class="process-card">
+                        <div class="process-number">1</div>
+                        <h3>Suppliers Submit</h3>
+                        <p>Raw plastic suppliers submit their available materials with details including type, quantity, and location through our platform.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-number">2</div>
+                        <h3>Quality Verification</h3>
+                        <p>Girija Enterprises verifies material quality, pricing, and availability to ensure the best value for all parties.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-number">3</div>
+                        <h3>Buyers Browse</h3>
+                        <p>Buyers explore available recycled materials, compare options, and submit purchase requests directly to us.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-number">4</div>
+                        <h3>We Connect</h3>
+                        <p>Girija Enterprises facilitates the transaction, coordinates logistics, and ensures smooth delivery from supplier to buyer.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sell Material Page -->
+    <div id="sell" class="page-section">
+        <section class="form-section" style="margin-top: 80px;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Sell Your Raw Plastic</h2>
+                    <p class="section-subtitle">Submit your available plastic materials. We'll connect you with verified buyers.</p>
+                </div>
+                <div class="form-container">
+                    <div id="sellSuccess" class="success-message">
+                        ✓ Thank you! Your submission has been received. Girija Enterprises will contact you within 24 hours.
+                    </div>
+                    <form id="sellForm" onsubmit="handleSellSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Supplier Name *</label>
+                                <input type="text" required placeholder="Your full name">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number *</label>
+                                <input type="tel" required placeholder="+91 9876543210">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Location *</label>
+                            <input type="text" required placeholder="City, State">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Plastic Type *</label>
+                                <select required>
+                                    <option value="">Select type</option>
+                                    <option>PET (Polyethylene Terephthalate)</option>
+                                    <option>HDPE (High-Density Polyethylene)</option>
+                                    <option>PVC (Polyvinyl Chloride)</option>
+                                    <option>LDPE (Low-Density Polyethylene)</option>
+                                    <option>PP (Polypropylene)</option>
+                                    <option>PS (Polystyrene)</option>
+                                    <option>Mixed Plastics</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Quantity Available (kg) *</label>
+                                <input type="number" required placeholder="1000">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Expected Price (₹/kg)</label>
+                            <input type="number" placeholder="15">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Material Photos</label>
+                            <div class="file-upload" onclick="document.getElementById('sellFileInput').click()">
+                                <input type="file" id="sellFileInput" accept="image/*" multiple>
+                                <p>📷 Click to upload photos of your plastic material</p>
+                                <small style="color: var(--text-light);">Accepted: JPG, PNG (Max 5MB each)</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Pickup Location / Address *</label>
+                            <textarea required placeholder="Detailed address for material pickup"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Additional Details</label>
+                            <textarea placeholder="Any other information about the material condition, packaging, etc."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 1.25rem;">
+                            Submit Material Details
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Buy Material Page -->
+    <div id="buy" class="page-section">
+        <section class="form-section" style="margin-top: 80px; background: var(--light-gray);">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Available Recycled Materials</h2>
+                    <p class="section-subtitle">Browse quality-verified recycled plastic materials ready for purchase</p>
+                </div>
+
+                <div class="materials-grid">
+                    <div class="material-card">
+                        <div class="material-image">🔷</div>
+                        <div class="material-content">
+                            <div class="material-type">PET Recycled</div>
+                            <div class="material-detail">
+                                <span>Available:</span>
+                                <strong>5000 kg</strong>
+                            </div>
+                            <div class="material-detail">
+                                <span>Location:</span>
+                                <strong>Mumbai, MH</strong>
+                            </div>
+                            <div class="material-price">₹18/kg</div>
+                            <button class="btn btn-primary" style="width: 100%;" onclick="openOrderForm('PET Recycled')">
+                                Request Quote
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="material-card">
+                        <div class="material-image" style="background: linear-gradient(135deg, #2C7DA0, #00D084);">🔶</div>
+                        <div class="material-content">
+                            <div class="material-type">HDPE Granules</div>
+                            <div class="material-detail">
+                                <span>Available:</span>
+                                <strong>3000 kg</strong>
+                            </div>
+                            <div class="material-detail">
+                                <span>Location:</span>
+                                <strong>Delhi, DL</strong>
+                            </div>
+                            <div class="material-price">₹22/kg</div>
+                            <button class="btn btn-primary" style="width: 100%;" onclick="openOrderForm('HDPE Granules')">
+                                Request Quote
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="material-card">
+                        <div class="material-image" style="background: linear-gradient(135deg, #00D084, #0A8754);">🔸</div>
+                        <div class="material-content">
+                            <div class="material-type">PP Mixed</div>
+                            <div class="material-detail">
+                                <span>Available:</span>
+                                <strong>2500 kg</strong>
+                            </div>
+                            <div class="material-detail">
+                                <span>Location:</span>
+                                <strong>Pune, MH</strong>
+                            </div>
+                            <div class="material-price">₹16/kg</div>
+                            <button class="btn btn-primary" style="width: 100%;" onclick="openOrderForm('PP Mixed')">
+                                Request Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Request Form -->
+                <div class="form-container" style="margin-top: 4rem;">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">Request Material Purchase</h3>
+                    <div id="buySuccess" class="success-message">
+                        ✓ Order request received! Girija Enterprises will contact you with pricing and delivery details.
+                    </div>
+                    <form id="buyForm" onsubmit="handleBuySubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Company/Buyer Name *</label>
+                                <input type="text" required placeholder="Your company name">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number *</label>
+                                <input type="tel" required placeholder="+91 9876543210">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" required placeholder="your@email.com">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Material Type Required *</label>
+                                <select id="buyMaterialType" required>
+                                    <option value="">Select material</option>
+                                    <option>PET Recycled</option>
+                                    <option>HDPE Granules</option>
+                                    <option>PP Mixed</option>
+                                    <option>LDPE Film</option>
+                                    <option>PVC Compound</option>
+                                    <option>Other (specify below)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Quantity Needed (kg) *</label>
+                                <input type="number" required placeholder="1000">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Delivery Location *</label>
+                            <input type="text" required placeholder="City, State">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Requirements & Specifications</label>
+                            <textarea placeholder="Specific quality requirements, delivery timeline, etc."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 1.25rem;">
+                            Submit Order Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Us Page -->
+    <div id="about" class="page-section">
+        <section class="about-section" style="margin-top: 80px;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" style="color: white;">About Girija Enterprises</h2>
+                    <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Building a sustainable future through responsible plastic trading</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h3>Our Mission</h3>
+                        <p>At Girija Enterprises, we are committed to creating a circular economy for plastic materials. We connect raw plastic suppliers with recycling facilities and manufacturers, ensuring that valuable plastic waste is transformed into reusable resources.</p>
+
+                        <h3>Our Experience</h3>
+                        <p>With over a decade of experience in the plastic trading industry, we have built strong relationships with suppliers, recyclers, and manufacturers across India. Our network spans major industrial hubs, enabling efficient material flow and competitive pricing.</p>
+
+                        <h3>Quality Assurance</h3>
+                        <p>Every material passing through Girija Enterprises undergoes rigorous quality verification. We ensure transparency in grading, fair pricing, and reliable supply chains for all our partners.</p>
+
+                        <h3>Sustainability Focus</h3>
+                        <p>We believe in responsible business practices that benefit both the environment and the economy. By facilitating plastic recycling, we contribute to reducing landfill waste and promoting sustainable manufacturing.</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Verified Suppliers</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">1000+</div>
+                            <div class="stat-label">Tons Traded Monthly</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Cities Covered</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-section">
+        <section class="contact-section" style="margin-top: 80px;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Have questions? We're here to help you with all your plastic trading needs</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--dark);">Contact Information</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+                                <p><a href="tel:+919876543211">+91 98765 43211</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">💬</div>
+                            <div class="contact-details">
+                                <h4>WhatsApp</h4>
+                                <p><a href="https://wa.me/919876543210" target="_blank">+91 98765 43210</a></p>
+                                <p>Quick response for urgent inquiries</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p><a href="mailto:info@girijaenterprises.com">info@girijaenterprises.com</a></p>
+                                <p><a href="mailto:sales@girijaenterprises.com">sales@girijaenterprises.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <h4>Business Address</h4>
+                                <p>123 Industrial Area, Phase 2<br>
+                                Mumbai, Maharashtra 400001<br>
+                                India</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">🕒</div>
+                            <div class="contact-details">
+                                <h4>Business Hours</h4>
+                                <p>Monday - Saturday: 9:00 AM - 7:00 PM<br>
+                                Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-container" style="margin: 0;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Send Us a Message</h3>
+                        <div id="contactSuccess" class="success-message">
+                            ✓ Message sent successfully! We'll respond within 24 hours.
+                        </div>
+                        <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                            <div class="form-group">
+                                <label>Your Name *</label>
+                                <input type="text" required placeholder="Full name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Phone Number *</label>
+                                <input type="tel" required placeholder="+91 9876543210">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" placeholder="your@email.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Subject *</label>
+                                <select required>
+                                    <option value="">Select subject</option>
+                                    <option>General Inquiry</option>
+                                    <option>Supplier Partnership</option>
+                                    <option>Buyer Interest</option>
+                                    <option>Pricing Information</option>
+                                    <option>Logistics & Delivery</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Message *</label>
+                                <textarea required placeholder="Tell us how we can help you..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 1.25rem;">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Girija Enterprises</h4>
+                <p>Your trusted partner in sustainable plastic trading. Connecting suppliers and buyers for a circular economy.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('sell')">Sell Material</a></li>
+                    <li><a href="#" onclick="showPage('buy')">Buy Material</a></li>
+                    <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                    <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Materials We Trade</h4>
+                <ul class="footer-links">
+                    <li>PET (Polyethylene Terephthalate)</li>
+                    <li>HDPE (High-Density Polyethylene)</li>
+                    <li>PP (Polypropylene)</li>
+                    <li>LDPE (Low-Density Polyethylene)</li>
+                    <li>PVC & Mixed Plastics</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>📞 +91 98765 43210<br>
+                ✉️ info@girijaenterprises.com<br>
+                📍 Mumbai, Maharashtra<br>
+                💬 WhatsApp Available</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Girija Enterprises. All rights reserved. | Designed for sustainable plastic trading</p>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Close mobile menu if open
+            document.getElementById('navLinks').classList.remove('active');
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Form Submissions
+        function handleSellSubmit(event) {
+            event.preventDefault();
+            document.getElementById('sellSuccess').classList.add('show');
+            document.getElementById('sellForm').reset();
+            setTimeout(() => {
+                document.getElementById('sellSuccess').classList.remove('show');
+            }, 5000);
+            return false;
+        }
+
+        function handleBuySubmit(event) {
+            event.preventDefault();
+            document.getElementById('buySuccess').classList.add('show');
+            document.getElementById('buyForm').reset();
+            setTimeout(() => {
+                document.getElementById('buySuccess').classList.remove('show');
+            }, 5000);
+            return false;
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            document.getElementById('contactSuccess').classList.add('show');
+            document.getElementById('contactForm').reset();
+            setTimeout(() => {
+                document.getElementById('contactSuccess').classList.remove('show');
+            }, 5000);
+            return false;
+        }
+
+        // Open order form with pre-selected material
+        function openOrderForm(materialType) {
+            document.getElementById('buyMaterialType').value = materialType;
+            document.querySelector('#buy .form-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('navLinks');
+            const toggle = document.querySelector('.mobile-toggle');
+            
+            if (!nav.contains(event.target) && !toggle.contains(event.target)) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
